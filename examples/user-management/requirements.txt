@@ -1,0 +1,8 @@
+flask-jwt-extended
+Flask
+flask-cors
+requests
+flask_script
+flask_env
+flask_restplus
+cryptography

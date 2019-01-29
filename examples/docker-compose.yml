@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+   authentication-microservice:
+     depends_on:
+       - user-management
+     image: authentication-microservice
+     env_file: dev.env
+     build:
+      context: ./../authentication-microservice
+      # dockerfile: Dockerfile-dev
+     ports:
+       - 0:5000:5000
+   user-management:
+     image: user-management
+     env_file: dev.env
+     build:
+      context: ./user-management
+     # dockerfile: Dockerfile-dev
+     ports:
+       - 5001:5000
