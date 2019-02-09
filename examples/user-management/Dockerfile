@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.7-alpine3.9
 
 ENV PYTHONUNBUFFERED 1
 
@@ -11,7 +11,7 @@ RUN apk update && \
     apk add --no-cache postgresql-dev bash git libffi-dev
 # depend on the build.sh script or volume mapping to add the core package
 COPY --chown=app ./requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt && \
+RUN pip install --upgrade pip && pip install --no-cache-dir -r /app/requirements.txt && \
     apk del build-deps gcc
 
 # USER app
